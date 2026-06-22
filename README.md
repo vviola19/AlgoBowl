@@ -1,61 +1,75 @@
-AlgoBOWL: Tents and Trees Solver
+Alice in Mazeland Solver
 Overview
 
-This project was developed as part of a three-person team for Colorado School of Mines' AlgoBOWL competition. The goal was to create a solver for the Tents and Trees puzzle, where tents must be placed on a grid while satisfying a set of spatial and numerical constraints.
+Alice in Mazeland was a graph modeling project completed for CSCI 406: Algorithms at Colorado School of Mines.
 
-The solver evaluates puzzle states, places tents according to game rules, and minimizes violations when a perfect solution cannot be found. The project emphasizes algorithm design, object-oriented programming, and optimization techniques.
+The objective was to help Alice navigate a maze while minimizing the total energy required to reach the goal. Unlike a traditional maze, Alice's movement distance changes throughout the maze based on special cells that increase or decrease her step size. This required modeling not only Alice's location, but also her current movement state.
+
+The project focused on transforming a complex puzzle into a graph problem and applying shortest-path algorithms to find an optimal solution.
 
 Problem Description
 
-Tents and Trees is a logic puzzle played on a two-dimensional grid containing trees and empty spaces. A valid solution must satisfy several constraints:
+The maze consists of cells that contain:
 
-Every tent must be paired with a tree directly adjacent horizontally or vertically.
-Every tree must have exactly one corresponding tent.
-Tents cannot be adjacent to one another, including diagonally.
-Each row and column must contain a specified number of tents.
+Allowed movement directions
+Step size modifiers
+A starting location
+A goal location
 
-The objective is to produce a solution with the fewest possible violations.
+Alice begins with a step size of 1. As she moves through the maze, certain cells increase or decrease her step size, changing which cells are reachable in future moves.
+
+The challenge is to determine the minimum-energy path from the start to the goal while accounting for:
+
+Variable movement distances
+Directional movement restrictions
+Dynamic state changes throughout the maze
+Approach
+
+The maze was modeled as an explicit weighted graph.
+
+Each vertex represented a unique state consisting of:
+
+Alice's current position
+Her current step size
+
+Edges represented valid movements between states.
+
+Edge weights were based on the movement cost defined by the problem, allowing shortest-path algorithms to determine the optimal route through the maze.
+
+After constructing the graph, a shortest-path algorithm was used to identify the minimum-cost path from the start state to the goal state.
 
 Technologies Used
 Java
-Object-Oriented Programming
+Graph Theory
 Algorithms
 Data Structures
-Git/GitHub
-My Contributions
-
-Contributions included:
-
-Designing and implementing core puzzle-solving logic
-Developing object-oriented representations of tents, trees, and board states
-Assisting with violation tracking and solution evaluation
-Testing and debugging puzzle-solving behavior
-Collaborating on algorithm design and project integration
-Project Structure
-Component	Purpose
-Tent	Represents an individual tent and its properties
-Tree	Represents a tree on the puzzle board
-TentPlacer	Contains logic for tent placement and puzzle solving
-FileProcessor	Reads and processes puzzle input files
-Testing Classes	Validation and debugging of solver behavior
+Object-Oriented Programming
+Key Concepts
+Graph Modeling
+State-Space Representation
+Weighted Graphs
+Shortest Path Algorithms
+Complexity Analysis
+Algorithm Correctness
 Challenges
 
-Some of the primary challenges included:
+Some of the biggest challenges included:
 
-Managing multiple puzzle constraints simultaneously
-Preventing illegal tent placements
-Efficiently evaluating solution quality
-Coordinating code contributions within a team environment
-Balancing correctness with runtime performance
+Representing dynamic maze states as graph vertices
+Modeling changing movement distances without modifying the shortest-path algorithm itself
+Managing graph size efficiently for larger mazes
+Ensuring correctness of graph construction and edge generation
+Analyzing time and space complexity of the resulting graph
 What I Learned
 
-Through this project I gained experience with:
+This project strengthened my understanding of:
 
-Algorithmic problem solving
-Constraint-based optimization
-Object-oriented software design
-Team software development workflows
-Debugging and testing complex logic systems
-Team
+Translating real-world problems into graph models
+Designing state-space representations
+Applying graph algorithms to non-traditional problems
+Analyzing algorithm performance and scalability
+Defending technical design decisions during code reviews and interviews
+Course Information
 
-This project was completed as part of a three-person team for the Colorado School of Mines AlgoBOWL competition.
+Course: CSCI 406 – Algorithms
+Institution: Colorado School of Mines
